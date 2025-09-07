@@ -3,41 +3,54 @@ const { data: posts } = await useAsyncData(() =>
   queryCollection('content').all()
 )
 
-// Sort by date (assuming H1 is a date like `September 07, 2025`)
+// Sort by date (newest first, assuming H1 = date)
 const timeline = computed(() =>
   posts.value?.sort((a, b) => {
-    const dateA = new Date(a.title) // a.title is "# September 07, 2025"
+    const dateA = new Date(a.title)
     const dateB = new Date(b.title)
-    return dateB.getTime() - dateA.getTime() // newest first
+    return dateB.getTime() - dateA.getTime()
   }) || []
 )
 </script>
 
 <template>
   <UContainer>
-    <div class="relative border-l-2 border-gray-300 dark:border-gray-700 ml-8">
-      <div
-        v-for="entry in timeline"
-        :key="entry._id"
-        class="mb-12 relative"
-      >
-        <!-- Timeline Dot -->
-        <div
-          class="absolute -left-[14px] top-2 w-6 h-6 rounded-full bg-gray-800 dark:bg-gray-200 border-4 border-white dark:border-gray-900"
-        ></div>
-
-        <!-- Flex Layout -->
-        <UFlex class="items-start gap-8">
-          <!-- Left: Date -->
-          <div class="w-40 text-right pr-4 font-semibold text-gray-700 dark:text-gray-300">
-            {{ entry.title }}
+    <div class="max-w-2xl mx-auto py-8">
+      <div class="relative">
+        <!-- Timeline Line -->
+        <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700"></div>
+        
+        <div class="space-y-8">
+          <div
+            v-for="entry in timeline"
+            :key="entry._id"
+            class="relative flex items-start gap-6"
+          >
+            <!-- Timeline Dot -->
+            <div class="relative z-10">
+              <div class="w-8 h-8 rounded-full bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 flex items-center justify-center">
+                <div class="w-3 h-3 rounded-full bg-gray-400 dark:bg-gray-500"></div>
+              </div>
+            </div>
+            
+            <!-- Content Card -->
+            <div class="flex-1 min-w-0">
+              <!-- Date Header -->
+              <div class="mb-2">
+                <span class="text-sm font-medium text-gray-600 dark:text-gray-400">
+                  {{ entry.title }}
+                </span>
+              </div>
+              
+              <!-- Card -->
+              <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-6 transition-all duration-200 hover:shadow-md">
+                <div class="prose prose-gray dark:prose-invert max-w-none prose-sm">
+                  <ContentRenderer :value="entry.body" />
+                </div>
+              </div>
+            </div>
           </div>
-
-          <!-- Right: Content Card -->
-          <UCard class="flex-1 shadow-sm border border-gray-200 dark:border-gray-700">
-            <ContentRenderer :value="entry" />
-          </UCard>
-        </UFlex>
+        </div>
       </div>
     </div>
   </UContainer>
