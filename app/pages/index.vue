@@ -43,13 +43,10 @@ const timeline = computed(() =>
               </div>
 
               <!-- Card -->
-              <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-6 transition-all duration-200 hover:shadow-md">
-                <!-- <div class="prose prose-gray dark:prose-invert max-w-none prose-sm"> -->
-                  <ContentRenderer
-                    :value="entry"
-                    :prose="false"
-                  />
-                <!-- </div> -->
+              <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm px-6 transition-all duration-200 hover:shadow-md">
+                <div class="prose prose-gray dark:prose-invert max-w-none prose-sm">
+                  <ContentRenderer :value="entry" />
+                </div>
               </div>
             </div>
           </div>
