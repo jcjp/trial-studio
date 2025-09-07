@@ -1,28 +1,55 @@
-import tailwindcss from '@tailwindcss/vite'
-import tsconfigPaths from 'vite-tsconfig-paths'
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },
+
   modules: [
+    '@nuxt/eslint',
+    '@nuxt/ui',
     '@nuxt/content',
     '@nuxthub/core',
-    '@nuxt/ui'
   ],
-  css: [
-    '~/assets/css/main.css'
-  ],
+
+  devtools: {
+    enabled: true
+  },
+
+  css: ['~/assets/css/main.css'],
+
   content: {
+    build: {
+      markdown: {
+        toc: {
+          searchDepth: 1
+        }
+      }
+    },
     preview: {
       dev: true,
-      api: 'https://api.nuxt.studio',
+      api: 'https://api.nuxt.studio'
     }
   },
-  vite: {
-    plugins: [
-      tailwindcss(),
-      tsconfigPaths(),
-    ]
-  }
+
+  compatibilityDate: '2025-07-15',
+
+  nitro: {
+    prerender: {
+      routes: [
+        '/'
+      ],
+      crawlLinks: true,
+      autoSubfolderIndex: false
+    }
+  },
+
+  eslint: {
+    config: {
+      stylistic: {
+        commaDangle: 'never',
+        braceStyle: '1tbs'
+      }
+    }
+  },
+
+  icon: {
+    provider: 'iconify'
+  },
 })

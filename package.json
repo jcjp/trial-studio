@@ -7,27 +7,38 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "typecheck": "nuxt typecheck"
   },
   "dependencies": {
+    "@iconify-json/lucide": "^1.2.66",
+    "@iconify-json/simple-icons": "^1.2.50",
+    "@iconify-json/vscode-icons": "^1.2.30",
     "@nuxt/content": "3.6.3",
+    "@nuxt/image": "^1.11.0",
     "@nuxt/ui": "4.0.0-alpha.1",
     "@nuxthub/core": "0.9.0",
-    "@tailwindcss/typography": "^0.5.16",
     "better-sqlite3": "^12.2.0",
-    "nuxt": "^4.1.0",
-    "tailwindcss": "^4.1.13",
-    "vue": "^3.5.20",
-    "vue-router": "^4.5.1"
+    "nuxt": "^4.1.1",
+    "nuxt-og-image": "^5.1.9"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.9.0",
+    "eslint": "^9.34.0",
+    "typescript": "^5.9.2",
+    "vue-tsc": "^3.0.6",
+    "wrangler": "^4.34.0"
+  },
+  "resolutions": {
+    "unimport": "4.1.1"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
       "better-sqlite3"
+    ],
+    "ignoredBuiltDependencies": [
+      "vue-demi"
     ]
-  },
-  "devDependencies": {
-    "@tailwindcss/vite": "^4.1.13",
-    "vite-tsconfig-paths": "^5.1.4",
-    "wrangler": "^4.34.0"
   }
 }

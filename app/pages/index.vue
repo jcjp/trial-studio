@@ -18,8 +18,8 @@ const timeline = computed(() =>
     <div class="max-w-2xl mx-auto py-8">
       <div class="relative">
         <!-- Timeline Line -->
-        <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700"></div>
-        
+        <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700" />
+
         <div class="space-y-8">
           <div
             v-for="entry in timeline"
@@ -29,10 +29,10 @@ const timeline = computed(() =>
             <!-- Timeline Dot -->
             <div class="relative z-10">
               <div class="w-8 h-8 rounded-full bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 flex items-center justify-center">
-                <div class="w-3 h-3 rounded-full bg-gray-400 dark:bg-gray-500"></div>
+                <div class="w-3 h-3 rounded-full bg-gray-400 dark:bg-gray-500" />
               </div>
             </div>
-            
+
             <!-- Content Card -->
             <div class="flex-1 min-w-0">
               <!-- Date Header -->
@@ -41,12 +41,15 @@ const timeline = computed(() =>
                   {{ entry.title }}
                 </span>
               </div>
-              
+
               <!-- Card -->
               <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-6 transition-all duration-200 hover:shadow-md">
-                <div class="prose prose-gray dark:prose-invert max-w-none prose-sm">
-                  <ContentRenderer :value="entry.body" />
-                </div>
+                <!-- <div class="prose prose-gray dark:prose-invert max-w-none prose-sm"> -->
+                  <ContentRenderer
+                    :value="entry"
+                    :prose="false"
+                  />
+                <!-- </div> -->
               </div>
             </div>
           </div>
