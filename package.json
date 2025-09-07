@@ -11,9 +11,12 @@
   },
   "dependencies": {
     "@nuxt/content": "3.6.3",
+    "@nuxt/ui": "4.0.0-alpha.1",
     "@nuxthub/core": "0.9.0",
+    "@tailwindcss/typography": "^0.5.16",
     "better-sqlite3": "^12.2.0",
     "nuxt": "^4.1.0",
+    "tailwindcss": "^4.1.13",
     "vue": "^3.5.20",
     "vue-router": "^4.5.1"
   },
@@ -23,6 +26,8 @@
     ]
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.1.13",
+    "vite-tsconfig-paths": "^5.1.4",
     "wrangler": "^4.34.0"
   }
 }
