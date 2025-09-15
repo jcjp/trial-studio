@@ -6,6 +6,7 @@ const config = {
     './components/**/*.{vue,js,ts}',
     './pages/**/*.{vue,js,ts}',
     './content/**/*.{md,yml,json}',
+    './**/*.{md,yml,json}',
   ],
   theme: {
     extend: {},
